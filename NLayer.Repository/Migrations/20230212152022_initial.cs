@@ -33,7 +33,7 @@ namespace NLayer.Repository.Migrations
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    CaregoryId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -41,8 +41,8 @@ namespace NLayer.Repository.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CaregoryId",
-                        column: x => x.CaregoryId,
+                        name: "FK_Products_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -87,14 +87,14 @@ namespace NLayer.Repository.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "CaregoryId", "CreatedDate", "Name", "Price", "Stock", "UpdatedDate" },
+                columns: new[] { "Id", "CategoryId", "CreatedDate", "Name", "Price", "Stock", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2023, 2, 8, 22, 44, 35, 786, DateTimeKind.Local).AddTicks(9698), "Kalem 1", 100m, 20, null },
-                    { 2, 1, new DateTime(2023, 2, 8, 22, 44, 35, 786, DateTimeKind.Local).AddTicks(9707), "Kalem 2", 200m, 30, null },
-                    { 3, 1, new DateTime(2023, 2, 8, 22, 44, 35, 786, DateTimeKind.Local).AddTicks(9709), "Kalem 3", 600m, 60, null },
-                    { 4, 2, new DateTime(2023, 2, 8, 22, 44, 35, 786, DateTimeKind.Local).AddTicks(9711), "Kitap 1", 600m, 60, null },
-                    { 5, 2, new DateTime(2023, 2, 8, 22, 44, 35, 786, DateTimeKind.Local).AddTicks(9712), "Kitap 2", 500m, 50, null }
+                    { 1, 1, new DateTime(2023, 2, 12, 18, 20, 22, 212, DateTimeKind.Local).AddTicks(6464), "Kalem 1", 100m, 20, null },
+                    { 2, 1, new DateTime(2023, 2, 12, 18, 20, 22, 212, DateTimeKind.Local).AddTicks(6474), "Kalem 2", 200m, 30, null },
+                    { 3, 1, new DateTime(2023, 2, 12, 18, 20, 22, 212, DateTimeKind.Local).AddTicks(6476), "Kalem 3", 600m, 60, null },
+                    { 4, 2, new DateTime(2023, 2, 12, 18, 20, 22, 212, DateTimeKind.Local).AddTicks(6477), "Kitap 1", 600m, 60, null },
+                    { 5, 2, new DateTime(2023, 2, 12, 18, 20, 22, 212, DateTimeKind.Local).AddTicks(6478), "Kitap 2", 500m, 50, null }
                 });
 
             migrationBuilder.InsertData(
@@ -114,9 +114,9 @@ namespace NLayer.Repository.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CaregoryId",
+                name: "IX_Products_CategoryId",
                 table: "Products",
-                column: "CaregoryId");
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
